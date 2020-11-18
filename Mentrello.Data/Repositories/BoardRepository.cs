@@ -1,33 +1,33 @@
-﻿using Mentrello.Domain.Models;
-using Mentrello.Domain.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Mentrello.Domain.Models;
+using Mentrello.Domain.Repositories;
 
 namespace Mentrello.Data.Repositories
 {
-    public class BoardRepository : IBoardRepository<Guid>
+    public class BoardRepository : IBoardRepository
     {
-        public IOutput<Board<Guid>> CreateNewBoard()
+        public Board CreateNewBoard(Board board)
         {
             throw new NotImplementedException();
         }
 
-        public IOutput<bool> DeleteBoardById(Guid id)
+        public bool DeleteBoardById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public IOutput<IEnumerable<Board<Guid>>> GetAllBoards()
+        public IEnumerable<Board> GetAllBoards()
         {
             throw new NotImplementedException();
         }
 
-        public IOutput<Board<Guid>> GetBoardById(Guid id)
+        public Board GetBoardById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public IOutput<bool> UpdateBoardById(Guid id)
+        public bool UpdateBoardById(Guid id)
         {
             throw new NotImplementedException();
         }

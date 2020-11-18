@@ -1,7 +1,11 @@
-﻿namespace Mentrello.Domain.Models
+﻿using System;
+
+namespace Mentrello.Domain.Models
 {
-    public abstract class Card<T> : IModelBase<T>
+    public class Card
     {
-        public T Id { get; set; }
+        public Guid CardId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

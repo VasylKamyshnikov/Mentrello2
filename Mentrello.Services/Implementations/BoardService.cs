@@ -1,53 +1,65 @@
-﻿using Mentrello.Domain.Repositories;
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using Mentrello.Domain.Models;
+using Mentrello.Domain.Repositories;
 using Mentrello.Services.Interfaces;
 using Mentrello.Services.Models;
-using System;
-using System.Collections.Generic;
+using Mentrello.Utils.Exceptions;
 
 namespace Mentrello.Services.Implementations
 {
     public class BoardService : IBoardService
     {
-        private readonly IBoardRepository<Guid> _boardRepository;
+        private readonly IBoardRepository _boardRepository;
 
-        public BoardService(IBoardRepository<Guid> boardRepository)
+        public BoardService(IBoardRepository boardRepository)
         {
             _boardRepository = boardRepository;
         }
 
-        public Board CreateBoard()
+        public BoardModel CreateBoard(ClaimsPrincipal user, BoardModel model)
         {
-            var repoResult = _boardRepository.CreateNewBoard();
-            if (repoResult.IsSuccess)
+            //validate user
+            if (user == null)
             {
-                var board = new Board
-                {
-                    Id = repoResult.Result.Id,
-                    Description = "I am new Board!"
-                };
-
-                return board;
+                throw new InvalidUserException();
             }
 
-            return null;
+            var board = new Board
+            {
+                BoardId = Guid.NewGuid(),
+                Name = model.Name,
+                Description = model.Description
+            };
+
+            var result = _boardRepository.CreateNewBoard(board);
+
+            return new BoardModel
+            {
+                Name = result.Name,
+                Description = result.Description,
+                AssignedToId = result.AssignedToId,
+                AuthorId = result.AuthorId
+            };
         }
 
-        public bool DeleteBoardById(Guid id)
+        public bool DeleteBoardById(ClaimsPrincipal user, Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Board> GetAllBoards()
+        public IEnumerable<BoardModel> GetAllBoards(ClaimsPrincipal user)
         {
             throw new NotImplementedException();
         }
 
-        public Board GetBoardById(Guid id)
+        public BoardModel GetBoardById(ClaimsPrincipal user, Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateExistingBoard(Guid id)
+        public bool UpdateExistingBoard(ClaimsPrincipal user, Guid id)
         {
             throw new NotImplementedException();
         }

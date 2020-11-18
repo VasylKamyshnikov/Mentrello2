@@ -1,9 +1,9 @@
 ﻿using Mentrello.Domain.Models;
-using System;
 
 namespace Mentrello.Data.Entities
 {
-    public class Card : Card<Guid>
+    public class CardEntity : Card, IEntity<int>
     {
+        public int Id { get; set; }
     }
 }

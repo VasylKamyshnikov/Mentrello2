@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mentrello.Data\Mentrello.Data.csproj" />
+    <ProjectReference Include="..\Mentrello.Services\Mentrello.Services.csproj" />
+  </ItemGroup>
+
 
 </Project>

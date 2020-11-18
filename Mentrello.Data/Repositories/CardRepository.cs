@@ -1,33 +1,33 @@
-﻿using Mentrello.Domain.Models;
-using Mentrello.Domain.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Mentrello.Domain.Models;
+using Mentrello.Domain.Repositories;
 
 namespace Mentrello.Data.Repositories
 {
-    public class CardRepository : ICardRepository<Guid>
+    public class CardRepository : ICardRepository
     {
-        public IOutput<Card<Guid>> CreateNewCard()
+        public Card CreateNewCard(Card card)
         {
             throw new NotImplementedException();
         }
 
-        public IOutput<int> DeleteCardById(Guid id)
+        public int DeleteCardById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public IOutput<IEnumerable<Card<Guid>>> GetAllCards()
+        public IEnumerable<Card> GetAllCards()
         {
             throw new NotImplementedException();
         }
 
-        public IOutput<Card<Guid>> GetCardById(Guid id)
+        public Card GetCardById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public IOutput<int> UpdateCardById(Guid id)
+        public int UpdateCardById(Guid id)
         {
             throw new NotImplementedException();
         }

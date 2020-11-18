@@ -1,14 +1,15 @@
-﻿using Mentrello.Domain.Models;
+﻿using System;
 using System.Collections.Generic;
+using Mentrello.Domain.Models;
 
 namespace Mentrello.Domain.Repositories
 {
-    public interface ICardRepository<KeyType>
+    public interface ICardRepository
     {
-        IOutput<Card<KeyType>> CreateNewCard();
-        IOutput<IEnumerable<Card<KeyType>>> GetAllCards();
-        IOutput<Card<KeyType>> GetCardById(KeyType id);
-        IOutput<int> UpdateCardById(KeyType id);
-        IOutput<int> DeleteCardById(KeyType id);
+        Card CreateNewCard(Card card);
+        IEnumerable<Card> GetAllCards();
+        Card GetCardById(Guid id);
+        int UpdateCardById(Guid id);
+        int DeleteCardById(Guid id);
     }
 }

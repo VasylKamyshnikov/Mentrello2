@@ -1,15 +1,16 @@
-﻿using Mentrello.Services.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
+using Mentrello.Services.Models;
 
 namespace Mentrello.Services.Interfaces
 {
     public interface IBoardService
     {
-        Board CreateBoard();
-        IEnumerable<Board> GetAllBoards();
-        Board GetBoardById(Guid id);
-        bool UpdateExistingBoard(Guid id);
-        bool DeleteBoardById(Guid id);
+        BoardModel CreateBoard(ClaimsPrincipal user, BoardModel model);
+        IEnumerable<BoardModel> GetAllBoards(ClaimsPrincipal user);
+        BoardModel GetBoardById(ClaimsPrincipal user, Guid id);
+        bool UpdateExistingBoard(ClaimsPrincipal user, Guid id);
+        bool DeleteBoardById(ClaimsPrincipal user, Guid id);
     }
 }

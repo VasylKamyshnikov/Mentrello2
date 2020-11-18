@@ -1,7 +1,7 @@
-﻿using Mentrello.Services.Interfaces;
+﻿using System;
+using Mentrello.Services.Interfaces;
+using Mentrello.Services.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 
 namespace Mentrello.API.Controllers
 {
@@ -17,38 +17,39 @@ namespace Mentrello.API.Controllers
 
         [HttpPost]
         [Route("create", Name = "CreateBoard")]
-        public async Task<IActionResult> CreateBoard()
+        public IActionResult CreateBoard(BoardModel board)
         {
-            return Ok(await _boardService.CreateBoard());
+            var result = _boardService.CreateBoard(User, board);
+            return Ok(result);
         }
 
         [HttpGet]
         [Route("all", Name = "GetBoardCollection")]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
-            return Ok(await _boardService.GetAllBoards());
+            return Ok(_boardService.GetAllBoards(User));
         }
 
         [HttpGet]
         [Route("{id:guid}", Name = "GetBoardById")]
-        public async Task<IActionResult> GetById(Guid id)
+        public IActionResult GetById(Guid id)
         {
-            return Ok(await _boardService.GetBoardById(id));
+            return Ok(_boardService.GetBoardById(User, id));
         }
 
         [HttpPatch]
         [Route("update/{id:guid}", Name = "UpdateBoard")]
-        public async Task<IActionResult> Update(Guid id)
+        public IActionResult Update(Guid id)
         {
-            await _boardService.UpdateExistingBoard(id);
+            _boardService.UpdateExistingBoard(User, id);
             return Ok($"BOARD # {id} has been updated!");
         }
 
         [HttpDelete]
         [Route("delete/{id:guid}", Name = "DeleteBoard")]
-        public async Task<IActionResult> Delete(Guid id)
+        public IActionResult Delete(Guid id)
         {
-            await _boardService.DeleteBoardById(id);
+            _boardService.DeleteBoardById(User, id);
             return Ok($"BOARD # {id} has been deleted!");
         }
     }

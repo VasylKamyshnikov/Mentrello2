@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace Mentrello.Domain.Models
+namespace Mentrello.Services.Models
 {
-    public class Board
+    public class BoardModel
     {
-        public Guid BoardId { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        //public User AssignedTo { get; set; }
-        //public User Author { get; set; }
+        public string AssignedTo { get; set; }
+        public string Author { get; set; }
         public Guid AssignedToId { get; set; }
         public Guid AuthorId { get; set; }
     }

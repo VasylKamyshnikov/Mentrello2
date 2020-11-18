@@ -1,14 +1,17 @@
-﻿using Mentrello.Domain.Models;
+﻿using System;
 using System.Collections.Generic;
+using Mentrello.Domain.Models;
 
 namespace Mentrello.Domain.Repositories
 {
-    public interface IBoardRepository<KeyType>
+    public interface IBoardRepository
     {
-        IOutput<Board<KeyType>> CreateNewBoard();
-        IOutput<IEnumerable<Board<KeyType>>> GetAllBoards();
-        IOutput<Board<KeyType>> GetBoardById(KeyType id);
-        IOutput<bool> UpdateBoardById(KeyType id);
-        IOutput<bool> DeleteBoardById(KeyType id);
+        Board CreateNewBoard(Board board);
+        IEnumerable<Board> GetAllBoards();
+        Board GetBoardById(Guid id);
+        //return Board
+        bool UpdateBoardById(Guid id);
+        //return Board
+        bool DeleteBoardById(Guid id);
     }
 }
