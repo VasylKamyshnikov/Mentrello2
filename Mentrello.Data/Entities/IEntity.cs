@@ -1,7 +1,7 @@
 ﻿namespace Mentrello.Data.Entities
 {
-    public interface IEntity<PrimaryKey>
+    public interface IEntity<PKeyType>
     {
-        PrimaryKey Id { get; set; }
+        PKeyType EntityId { get; set; }
     }
 }

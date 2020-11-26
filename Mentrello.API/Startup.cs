@@ -1,7 +1,5 @@
 using Mentrello.Data.Repositories;
 using Mentrello.Domain.Repositories;
-using Mentrello.Services.Implementations;
-using Mentrello.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,7 +24,6 @@ namespace Mentrello.API
 
             #region Services
             
-            services.AddScoped<IBoardService, BoardService>();
 
             #endregion
 

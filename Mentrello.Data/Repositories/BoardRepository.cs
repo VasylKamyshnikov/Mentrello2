@@ -7,29 +7,71 @@ namespace Mentrello.Data.Repositories
 {
     public class BoardRepository : IBoardRepository
     {
-        public Board CreateNewBoard(Board board)
+        public IOutput<Board> Create(Board model)
         {
-            throw new NotImplementedException();
+            var board = new Board
+            {
+                Name = "First Board",
+                Description = "First Created Board",
+                Owner = new Actor { FullName = "First Last" }
+            };
+
+            return new Output<Board> { IsSuccessful = true, Result = board };
         }
 
-        public bool DeleteBoardById(Guid id)
+        public IOutput<Board> DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            var board = new Board
+            {
+                Name = "First Board",
+                Description = "First Deleted Board",
+                Owner = new Actor { FullName = "First Last" }
+            };
+
+            return new Output<Board> { IsSuccessful = true, Result = board };
         }
 
-        public IEnumerable<Board> GetAllBoards()
+        public IOutput<IEnumerable<Board>> GetAll()
         {
-            throw new NotImplementedException();
+            var board1 = new Board
+            {
+                Name = "First Board",
+                Description = "First Created Board",
+                Owner = new Actor { FullName = "First Last" }
+            };
+            var board2 = new Board
+            {
+                Name = "Second Board",
+                Description = "Second Created Board",
+                Owner = new Actor { FullName = "First Last" }
+            };
+            var cards = new List<Board> { board1, board2 };
+
+            return new Output<IEnumerable<Board>> { IsSuccessful = true, Result = cards };
         }
 
-        public Board GetBoardById(Guid id)
+        public IOutput<Board> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var board = new Board
+            {
+                Name = "First Board",
+                Description = "First Created Board",
+                Owner = new Actor { FullName = "First Last" }
+            };
+
+            return new Output<Board> { IsSuccessful = true, Result = board };
         }
 
-        public bool UpdateBoardById(Guid id)
+        public IOutput<Board> UpdateById(Guid id)
         {
-            throw new NotImplementedException();
+            var board = new Board
+            {
+                Name = "First Board",
+                Description = "First Updated Board",
+                Owner = new Actor { FullName = "First Last" }
+            };
+
+            return new Output<Board> { IsSuccessful = true, Result = board };
         }
     }
 }

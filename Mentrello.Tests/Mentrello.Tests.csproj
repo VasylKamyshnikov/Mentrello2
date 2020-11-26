@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Mentrello.Services\Mentrello.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>

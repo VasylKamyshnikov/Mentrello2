@@ -2,10 +2,32 @@
 
 namespace Mentrello.Domain.Models
 {
-    public class Card
+    public interface ICard
     {
-        public Guid CardId { get; set; }
+        Guid Id { get; set; }
+
+        string Name { get; set; }
+        string Description { get; set; }
+        string Status { get; set; }
+        string Comment { get; set; }
+
+        IBoard ParentBoard { get; set; }
+
+        IActor AssignedTo { get; set; }
+        IActor Owner { get; set; }
+    }
+    public class Card : ICard
+    {
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Status { get; set; }
+        public string Comment { get; set; }
+
+        public IBoard ParentBoard { get; set; }
+
+        public IActor AssignedTo { get; set; }
+        public IActor Owner { get; set; }
     }
 }

@@ -4,6 +4,6 @@ namespace Mentrello.Data.Entities
 {
     public class BoardEntity : Board, IEntity<int>
     {
-        public int Id { get; set; }
+        public int EntityId { get; set; }
     }
 }

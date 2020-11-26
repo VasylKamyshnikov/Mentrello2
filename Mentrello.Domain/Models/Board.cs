@@ -2,14 +2,23 @@
 
 namespace Mentrello.Domain.Models
 {
-    public class Board
+    public interface IBoard
     {
-        public Guid BoardId { get; set; }
+        Guid Id { get; set; }
+
+        string Name { get; set; }
+        string Description { get; set; }
+
+        IActor Owner { get; set; }
+    }
+
+    public class Board : IBoard
+    {
+        public Guid Id { get; set; }
+
         public string Name { get; set; }
         public string Description { get; set; }
-        //public User AssignedTo { get; set; }
-        //public User Author { get; set; }
-        public Guid AssignedToId { get; set; }
-        public Guid AuthorId { get; set; }
+
+        public IActor Owner { get; set; }
     }
 }
