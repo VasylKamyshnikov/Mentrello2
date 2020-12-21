@@ -4,7 +4,7 @@ namespace Mentrello.Domain.Models
 {
     public interface ICard
     {
-        Guid Id { get; set; }
+        //Guid Id { get; set; }
 
         string Name { get; set; }
         string Description { get; set; }
@@ -13,12 +13,12 @@ namespace Mentrello.Domain.Models
 
         IBoard ParentBoard { get; set; }
 
-        IActor AssignedTo { get; set; }
-        IActor Owner { get; set; }
+        IUser AssignedTo { get; set; }
+        IUser Owner { get; set; }
     }
-    public class Card : ICard
+    public class CardModel : ICard
     {
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }
@@ -27,7 +27,7 @@ namespace Mentrello.Domain.Models
 
         public IBoard ParentBoard { get; set; }
 
-        public IActor AssignedTo { get; set; }
-        public IActor Owner { get; set; }
+        public IUser AssignedTo { get; set; }
+        public IUser Owner { get; set; }
     }
 }

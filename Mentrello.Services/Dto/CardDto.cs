@@ -2,7 +2,7 @@
 
 namespace Mentrello.Services.Dto
 {
-    public class CardDto : Card
+    public class CardDto : CardModel
     {
     }
 }

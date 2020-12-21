@@ -7,71 +7,71 @@ namespace Mentrello.Data.Repositories
 {
     public class CardRepository : ICardRepository
     {
-        public IOutput<Card> Create(Card model)
+        public IOutput<CardModel> Create(CardModel model)
         {
-            var card = new Card
+            var card = new CardModel
             {
                 Name = "First Card",
                 Description = "First Created Card",
-                Owner = new Actor { FullName = "First Last" }
+                Owner = new UserModel { FullName = "First Last" }
             };
 
-            return new Output<Card> { IsSuccessful = true, Result = card };
+            return new Output<CardModel> { Succeeded = true, Result = card };
         }
 
-        public IOutput<Card> DeleteById(Guid id)
+        public IOutput<CardModel> DeleteById(Guid id)
         {
-            var card = new Card
+            var card = new CardModel
             {
                 Name = "First Card",
                 Description = "First Deleted Card",
-                Owner = new Actor { FullName = "First Last" }
+                Owner = new UserModel { FullName = "First Last" }
             };
 
-            return new Output<Card> { IsSuccessful = true, Result = card };
+            return new Output<CardModel> { Succeeded = true, Result = card };
         }
 
-        public IOutput<IEnumerable<Card>> GetAll()
+        public IOutput<IEnumerable<CardModel>> GetAll()
         {
-            var card1 = new Card
+            var card1 = new CardModel
             {
                 Name = "First Card",
                 Description = "First Created Card",
-                Owner = new Actor { FullName = "First Last" }
+                Owner = new UserModel { FullName = "First Last" }
             };
-            var card2 = new Card
+            var card2 = new CardModel
             {
                 Name = "Second Card",
                 Description = "Second Created Card",
-                Owner = new Actor { FullName = "First Last" }
+                Owner = new UserModel { FullName = "First Last" }
             };
-            var cards = new List<Card> { card1, card2};
+            var cards = new List<CardModel> { card1, card2};
 
-            return new Output<IEnumerable<Card>> { IsSuccessful = true, Result = cards };
+            return new Output<IEnumerable<CardModel>> { Succeeded = true, Result = cards };
         }
 
-        public IOutput<Card> GetById(Guid id)
+        public IOutput<CardModel> GetById(Guid id)
         {
-            var card = new Card
+            var card = new CardModel
             {
                 Name = "First Card",
                 Description = "First Created Card",
-                Owner = new Actor { FullName = "First Last" }
+                Owner = new UserModel { FullName = "First Last" }
             };
 
-            return new Output<Card> { IsSuccessful = true, Result = card };
+            return new Output<CardModel> { Succeeded = true, Result = card };
         }
 
-        public IOutput<Card> UpdateById(Guid id)
+        public IOutput<CardModel> UpdateById(Guid id)
         {
-            var card = new Card
+            var card = new CardModel
             {
                 Name = "Updated Card",
                 Description = "First Updated Card",
-                Owner = new Actor { FullName = "First Last" }
+                Owner = new UserModel { FullName = "First Last" }
             };
 
-            return new Output<Card> { IsSuccessful = true, Result = card };
+            return new Output<CardModel> { Succeeded = true, Result = card };
         }
     }
 }

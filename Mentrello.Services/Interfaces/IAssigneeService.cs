@@ -4,8 +4,8 @@ namespace Mentrello.Services.Interfaces
 {
     public interface IAssigneeService : IGuestService
     {
-        ICard AssignCardTo(ICard card, IActor actor);
-        ICard AddCommentToCard(ICard card, IActor actor);
-        ICard ChangeCardStatus(ICard card, IActor actor);
+        ICard AssignCardTo(ICard card, IUser actor);
+        ICard AddCommentToCard(ICard card, IUser actor);
+        ICard ChangeCardStatus(ICard card, IUser actor);
     }
 }

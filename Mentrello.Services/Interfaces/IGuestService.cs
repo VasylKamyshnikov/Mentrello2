@@ -8,7 +8,7 @@ namespace Mentrello.Services.Interfaces
     {
         IEnumerable<IBoard> ReadAllBoards();
         IEnumerable<ICard> ReadAllCards();
-        IBoard ReadBoard(Guid boardId, IActor actor);
-        ICard ReadCard(Guid cardId, IActor actor);
+        IBoard ReadBoard(Guid boardId);
+        ICard ReadCard(Guid cardId);
     }
 }

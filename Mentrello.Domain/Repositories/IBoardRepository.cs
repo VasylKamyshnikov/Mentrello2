@@ -3,7 +3,7 @@ using Mentrello.Domain.Models;
 
 namespace Mentrello.Domain.Repositories
 {
-    public interface IBoardRepository : IRepository<Board, Guid>
+    public interface IBoardRepository : IRepository<BoardModel, Guid>
     {
     }
 }

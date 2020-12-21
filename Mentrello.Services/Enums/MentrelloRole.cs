@@ -1,6 +1,6 @@
 ﻿namespace Mentrello.Services.Enums
 {
-    public enum ActorRole
+    public enum MentrelloRole
     {
         Owner = 1,
         Assignee = 2,

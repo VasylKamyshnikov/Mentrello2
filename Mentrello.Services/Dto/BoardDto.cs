@@ -2,7 +2,7 @@
 
 namespace Mentrello.Services.Dto
 {
-    public class BoardDto : Board
+    public class BoardDto : BoardModel
     {
     }
 }

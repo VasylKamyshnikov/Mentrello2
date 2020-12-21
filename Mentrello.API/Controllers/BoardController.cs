@@ -1,20 +1,19 @@
 ﻿using System;
 using Mentrello.Services.Dto;
-using Mentrello.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mentrello.API.Controllers
 {
+    [Authorize]
+    //[AllowAnonymous]
     [ApiController]
     [Route("board")]
     public class BoardController : ControllerBase
     {
-        private readonly IBoardOwnerService _boardOwnerService;
-        private readonly IAssigneeService _assigneeService;
-        public BoardController(IBoardOwnerService boardOwnerService, IAssigneeService assigneeService)
+        public BoardController()
         {
-            _boardOwnerService = boardOwnerService;
-            _assigneeService = assigneeService;
+
         }
 
         [HttpPost]
@@ -29,6 +28,7 @@ namespace Mentrello.API.Controllers
         [Route("all", Name = "GetBoardCollection")]
         public IActionResult GetAll()
         {
+            var user = User.Identity;
             return Ok();
         }
 

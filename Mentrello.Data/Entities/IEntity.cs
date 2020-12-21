@@ -2,6 +2,6 @@
 {
     public interface IEntity<PKeyType>
     {
-        PKeyType EntityId { get; set; }
+        PKeyType Id { get; set; }
     }
 }
