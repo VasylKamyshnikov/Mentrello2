@@ -3,7 +3,7 @@ using Mentrello.Domain.Models;
 
 namespace Mentrello.Domain.Repositories
 {
-    public interface ICardRepository : IRepository<CardModel, Guid>
+    public interface ICardRepository : IRepository<Card, Guid>
     {
     }
 }

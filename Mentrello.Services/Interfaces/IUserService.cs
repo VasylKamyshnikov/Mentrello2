@@ -1,9 +1,11 @@
-﻿using Mentrello.Services.Dto;
+﻿using Mentrello.Domain.Models;
 
 namespace Mentrello.Services.Interfaces
 {
     public interface IUserService
     {
-        AuthResponceDto GenerateToken(string username);
+        User Create(User user);
+        User GetByUsername(string username);
+        User Update(User existingUser);
     }
 }

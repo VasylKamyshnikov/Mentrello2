@@ -7,71 +7,71 @@ namespace Mentrello.Data.Repositories
 {
     public class BoardRepository : IBoardRepository
     {
-        public IOutput<BoardModel> Create(BoardModel model)
+        public IOutput<Board> Create(Board model)
         {
-            var board = new BoardModel
+            var board = new Board
             {
                 Name = "First Board",
                 Description = "First Created Board",
-                Owner = new UserModel { FullName = "First Last" }
+                Owner = new User { FullName = "First Last" }
             };
 
-            return new Output<BoardModel> { Succeeded = true, Result = board };
+            return new Output<Board> { Succeeded = true, Result = board };
         }
 
-        public IOutput<BoardModel> DeleteById(Guid id)
+        public IOutput<Board> DeleteById(Guid id)
         {
-            var board = new BoardModel
+            var board = new Board
             {
                 Name = "First Board",
                 Description = "First Deleted Board",
-                Owner = new UserModel { FullName = "First Last" }
+                Owner = new User { FullName = "First Last" }
             };
 
-            return new Output<BoardModel> { Succeeded = true, Result = board };
+            return new Output<Board> { Succeeded = true, Result = board };
         }
 
-        public IOutput<IEnumerable<BoardModel>> GetAll()
+        public IOutput<IEnumerable<Board>> GetAll()
         {
-            var board1 = new BoardModel
+            var board1 = new Board
             {
                 Name = "First Board",
                 Description = "First Created Board",
-                Owner = new UserModel { FullName = "First Last" }
+                Owner = new User { FullName = "First Last" }
             };
-            var board2 = new BoardModel
+            var board2 = new Board
             {
                 Name = "Second Board",
                 Description = "Second Created Board",
-                Owner = new UserModel { FullName = "First Last" }
+                Owner = new User { FullName = "First Last" }
             };
-            var cards = new List<BoardModel> { board1, board2 };
+            var cards = new List<Board> { board1, board2 };
 
-            return new Output<IEnumerable<BoardModel>> { Succeeded = true, Result = cards };
+            return new Output<IEnumerable<Board>> { Succeeded = true, Result = cards };
         }
 
-        public IOutput<BoardModel> GetById(Guid id)
+        public IOutput<Board> GetById(Guid id)
         {
-            var board = new BoardModel
+            var board = new Board
             {
                 Name = "First Board",
                 Description = "First Created Board",
-                Owner = new UserModel { FullName = "First Last" }
+                Owner = new User { FullName = "First Last" }
             };
 
-            return new Output<BoardModel> { Succeeded = true, Result = board };
+            return new Output<Board> { Succeeded = true, Result = board };
         }
 
-        public IOutput<BoardModel> UpdateById(Guid id)
+        public IOutput<Board> UpdateById(Guid id)
         {
-            var board = new BoardModel
+            var board = new Board
             {
                 Name = "First Board",
                 Description = "First Updated Board",
-                Owner = new UserModel { FullName = "First Last" }
+                Owner = new User { FullName = "First Last" }
             };
 
-            return new Output<BoardModel> { Succeeded = true, Result = board };
+            return new Output<Board> { Succeeded = true, Result = board };
         }
     }
 }

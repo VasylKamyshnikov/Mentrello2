@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Mentrello.Data.Entities;
+using Mentrello.Domain.Models;
 
 namespace Mentrello.Data
 {

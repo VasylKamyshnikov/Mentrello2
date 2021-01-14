@@ -6,9 +6,9 @@ namespace Mentrello.Services.Interfaces
 {
     public interface IGuestService
     {
-        IEnumerable<IBoard> ReadAllBoards();
-        IEnumerable<ICard> ReadAllCards();
-        IBoard ReadBoard(Guid boardId);
-        ICard ReadCard(Guid cardId);
+        //IEnumerable<IBoard> ReadAllBoards();
+        //IEnumerable<ICard> ReadAllCards();
+        //IBoard ReadBoard(Guid boardId);
+        //ICard ReadCard(Guid cardId);
     }
 }

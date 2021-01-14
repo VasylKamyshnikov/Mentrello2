@@ -1,12 +1,15 @@
 using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
+using Mentrello.API.Managers;
 using Mentrello.API.Settings;
 using Mentrello.Data;
 using Mentrello.Data.Repositories;
 using Mentrello.Domain.Repositories;
+using Mentrello.Services.Adapters;
 using Mentrello.Services.Implementations;
 using Mentrello.Services.Interfaces;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -17,6 +20,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Primitives;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Mentrello.API
@@ -36,8 +40,9 @@ namespace Mentrello.API
             var googleAuthSettings = Configuration.GetSection(GoogleAuthSettings.SectionName).Get<GoogleAuthSettings>();
             var jwtTokenSettings = Configuration.GetSection(JwtTokenSettings.SectionName).Get<JwtTokenSettings>();
 
-            services.AddSingleton(googleAuthSettings);
-            services.AddSingleton(jwtTokenSettings);
+            //services.AddSingleton(googleAuthSettings);
+            //services.AddSingleton(jwtTokenSettings);
+            services.Configure<JwtTokenSettings>(Configuration.GetSection(JwtTokenSettings.SectionName));
 
             services.AddControllers();
 
@@ -65,11 +70,11 @@ namespace Mentrello.API
                     {
                         OnTokenValidated = async context => 
                         {
-                            var asds = context.Result;
+                            var accessToken = context.SecurityToken as JwtSecurityToken;
                         },
                         OnMessageReceived = async context =>
                         {
-                            var asdas = context.Result;
+                            var token = context.Token;
                         }
                     };
                 })
@@ -79,15 +84,10 @@ namespace Mentrello.API
                     options.ClientId = googleAuthSettings.ClientId;
                     options.ClientSecret = googleAuthSettings.ClientSecret;
                     options.CallbackPath = googleAuthSettings.CallbackPath;
-
-                    options.ClaimActions.MapJsonKey("nameidentifier", "id");
-                    options.ClaimActions.MapJsonKey("name", "name");
-                    options.ClaimActions.MapJsonKey("givenname", "given_name");
-                    options.ClaimActions.MapJsonKey("surname", "family_name");
-                    options.ClaimActions.MapJsonKey("emailaddress", "email");
                     
                     var serviceProvider = services.BuildServiceProvider();
-                    options.Events = new AuthManager(serviceProvider.GetRequiredService<IUserService>());
+                    options.Events = serviceProvider.GetRequiredService<AuthManager>();
+                    options.SaveTokens = true;
                 });
 
             services.AddAuthorization(options =>
@@ -100,12 +100,14 @@ namespace Mentrello.API
             #region Services
 
             services.AddScoped<IUserService, UserService>();
-
+            services.AddScoped<IUserAdapter, UserAdapter>();
+            services.AddScoped<AuthManager>();
             #endregion
 
             #region Repositories
 
             services.AddScoped<IBoardRepository, BoardRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             #endregion
 

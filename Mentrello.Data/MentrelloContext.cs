@@ -1,4 +1,4 @@
-﻿using Mentrello.Data.Entities;
+﻿using Mentrello.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mentrello.Data
@@ -11,5 +11,6 @@ namespace Mentrello.Data
 
         public DbSet<Board> Boards { get; set; }
         public DbSet<Card> Cards { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
