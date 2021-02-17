@@ -23,8 +23,3 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Upload Mentrello test results
-      uses: actions/upload-artifact@v2
-      with:
-        name: Mentrello results
-        path: TestResults
