@@ -23,9 +23,8 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
     - name: Mentrello master archive
-      uses: thedoctor0/zip-release@master
-      with:
-        filename: 'release.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig'
+      run: zip -r master.zip . -x ".git/*" ".github/*"
+    - name: Release to Github
+      run: echo "Release"
