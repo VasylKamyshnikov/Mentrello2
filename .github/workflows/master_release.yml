@@ -3,9 +3,6 @@ name: Mentrello
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
 jobs:
   build:
 
@@ -19,12 +16,15 @@ jobs:
         dotnet-version: 3.1.x
     - name: Restore dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build --no-restore
+      
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - uses: actions/checkout@v1
+
     - name: Mentrello master archive
       run: zip -r master.zip . -x ".git/*" ".github/*"
+      
     - name: Release to Github
       run: echo "Master released!"
